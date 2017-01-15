@@ -1,0 +1,48 @@
+# modeled after Atom's "One Dark" syntax theme
+---
+background:
+  color: '282c34'
+default:
+  color: 'abb2be'
+
+comment:
+  color: '5c636f'
+  styles: [ italic ]
+
+keyword:
+  color: 'c57bdb'
+class:
+  color: 'd09a6a'
+constant:
+  color: 'd09a6a'
+function:
+  color: '65b0ec'
+string:
+  color: '99c27c'
+delimiter:
+  color: '99c27c'
+inline:
+  color: '99c27c'
+content:
+  color: '99c27c'
+symbol:
+  color: '5ab6c1'
+key:
+  color: '5ab6c1'
+integer:
+  color: 'd09a6a'
+float:
+  color: 'd09a6a'
+predefined-constant:
+  color: 'd09a6a'
+inline-delimiter:
+  color: 'bc5149'
+instance-variable:
+  color: 'de6d77'
+
+highlight:
+  color: '999999'
+  styles: [ bold ]
+line-numbers:
+  color: '555555'
+  after: ' '
