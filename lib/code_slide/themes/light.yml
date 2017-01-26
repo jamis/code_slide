@@ -33,6 +33,12 @@ integer:
   color: '976715'
 float:
   color: '976715'
+regexp:
+  color: '1485ba'
+char:
+  color: '1485ba'
+modifier:
+  color: '1485ba'
 predefined-constant:
   color: '976715'
 inline-delimiter:
