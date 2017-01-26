@@ -4,19 +4,42 @@ require 'code_slide/png_formatter'
 
 module CodeSlide
   class Snippet
+    MARK_PREFIX = %r{^\s*(#|//)\s*}
+    START_MARK  = /#{MARK_PREFIX}START:\s*/
+    END_MARK    = /#{MARK_PREFIX}END:\s*/
+
     def self.from_file(filename, options = {})
       options = options.dup
 
-      start = options.delete(:start) || 1
-      finish = options.delete(:finish) || -1
+      lines = File.readlines(filename)
+      mark = options.delete(:mark)
 
+      if mark
+        start = lines.index { |line| line =~ /#{START_MARK}#{mark}\s*$/i }
+        finish = lines.index { |line| line =~ /#{END_MARK}#{mark}\s*$/i }
+
+        # if start is defined, don't include the comment itself
+        start += 2 if start
+      else
+        start = options.delete(:start)
+        finish = options.delete(:finish)
+      end
+
+      start ||= 1
+      finish ||= -1
       line_start = options[:line_number_start] || start
 
       # assume people number their file lines starting at 1
       start -= 1 if start > 0
       finish -= 1 if finish > 0
 
-      text = File.read(filename).lines[start..finish].join
+      text = lines[start..finish].join
+
+      if options.delete(:strip_indent)
+        indent = text[/^\s*/]
+        text.gsub!(/^#{indent}/m, "")
+      end
+
       new(text,
           options.merge(lang: options[:lang] || detect_language_type(filename),
                         line_number_start: line_start))
