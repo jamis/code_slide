@@ -75,7 +75,7 @@ module CodeSlide
         use_font(@font, bold: @bold,
                         italic: @italic,
                         bold_italic: @bold_italic).
-        build_pdf(options).
+        build_pdf(**options).
         render_file(filename)
     end
 

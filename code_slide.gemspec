@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
 
   s.files = Dir['lib/**/*', 'MIT-LICENSE', 'README.md']
 
-  s.add_dependency 'prawn', '~> 2.1'
+  s.add_dependency 'prawn', '~> 2.5'
   s.add_dependency 'coderay', '~> 1.1'
-  s.add_dependency 'nokogiri', '~> 1.6'
+  s.add_dependency 'nokogiri', '~> 1.16'
 end
